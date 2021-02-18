@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+
+@model BookStore.Models.Book
+
+<form asp-action="Privacy" method="POST" class="form-group">
+    <div>
+        <label asp-for="BookTitle">Title: </label>
+        <input asp-for="BookTitle" />
+    </div>
+    <div>
+        <label asp-for="AuthorFirstName">Author First Name: </label>
+        <input asp-for="AuthorFirstName" />
+    </div>
+    <div>
+        <label asp-for="AuthorMiddleName">Author Middle Name or Middle Initial: </label>
+        <input asp-for="AuthorMiddleName" />
+    </div>
+    <div>
+        <label asp-for="AuthorLastName">Author Last Name: </label>
+        <input asp-for="AuthorLastName" />
+    </div>
+    <div>
+        <label asp-for="BookPublisher">Publisher: </label>
+        <input asp-for="BookPublisher" />
+    </div>
+    <div>
+        <label asp-for="ISBN">Enter Books ISBN: </label>
+        <input asp-for="ISBN" />
+    </div>
+    <div>
+        <label asp-for="Classification">Book Classification: </label>
+        <input asp-for="Classification" />
+    </div>
+    <div>
+        <label asp-for="Category">Category: </label>
+        <input asp-for="Category" />
+    </div>
+    <div>
+        <label asp-for="Price">Price: </label>
+        <input asp-for="Price" />
+    </div>
+    <button type="submit">TEST</button>
+    <div asp-validation-summary="All"></div>
+</form>

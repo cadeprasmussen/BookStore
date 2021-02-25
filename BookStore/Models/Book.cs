@@ -38,6 +38,10 @@ namespace BookStore.Models
         public string Category { get; set; }
 
         [Required]
+        //Adding numpages to start keeping track of the number of pages in the books
+        public int NumPages { get; set; }
+
+        [Required]
         public float Price { get; set; }
 
 

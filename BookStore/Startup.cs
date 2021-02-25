@@ -60,9 +60,13 @@ namespace BookStore
 
             app.UseEndpoints(endpoints =>
             {
+                //Changing end points so that the user can simply type /P1, /P2, etc., to access the different pages.
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    "pagnation",
+                    "P{page}",
+                    new { Controller = "Home", action = "Index" });
+
+                endpoints.MapDefaultControllerRoute();
             });
 
             //Making sure that data is there in the app and if not seeding the data

@@ -17,9 +17,10 @@ namespace BookStore.Migrations
                     AuthorMiddleName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     AuthorLastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     BookPublisher = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ISBN = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ISBN = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Classification = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Category = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NumPages = table.Column<int>(type: "int", nullable: false),
                     Price = table.Column<float>(type: "real", nullable: false)
                 },
                 constraints: table =>

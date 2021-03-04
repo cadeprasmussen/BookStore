@@ -62,9 +62,19 @@ namespace BookStore
             {
                 //Changing end points so that the user can simply type /P1, /P2, etc., to access the different pages.
                 endpoints.MapControllerRoute(
+                    "catpage",
+                    "{category}/{page:int}",
+                    new {Controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute(
                     "pagnation",
-                    "P{page}",
+                    "{page:int}",
                     new { Controller = "Home", action = "Index" });
+
+                endpoints.MapControllerRoute(
+                    "category",
+                    "{category}",
+                    new { Controller = "Home", action = "Index", page = 1 });
 
                 endpoints.MapDefaultControllerRoute();
             });

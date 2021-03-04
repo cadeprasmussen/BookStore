@@ -30,8 +30,14 @@
         </nav>
     </header>
     <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
+        
+        <main role="main" class="pb-3 m-3">
+            <div class="col-2 float-left">
+                <vc:navigation-menu />
+            </div>
+            <div class="m-3 offset-6">
+                @RenderBody()
+            </div>
         </main>
     </div>
 

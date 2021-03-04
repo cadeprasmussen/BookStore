@@ -28,11 +28,12 @@ namespace BookStore.Controllers
         }
 
         //Creating the instances of the books and page info as we get to the page
-        public IActionResult Index(int page = 1)
+        public IActionResult Index(string category, int page = 1)
         {
             return View(new BookListViewModel
             {
                 Books = _repository.Books
+                        .Where(p => category == null || p.Category == category)
                         .OrderBy(p => p.BookId)
                         .Skip((page - 1) * PageSize)
                         .Take(PageSize),
@@ -40,8 +41,11 @@ namespace BookStore.Controllers
                 {
                     CurrentPage = page,
                     BooksPerPage = PageSize,
-                    TotalNumBooks = _repository.Books.Count()
-                }
+                    //If category null then dispaly all books if not make to where number of pages category count
+                    TotalNumBooks = category == null ?_repository.Books.Count() :
+                        _repository.Books.Where(x => x.Category == category).Count()
+                },
+                CurrentCategory = category
             }) ;
         }
 

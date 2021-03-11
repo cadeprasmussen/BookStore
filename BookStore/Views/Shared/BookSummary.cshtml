@@ -1,0 +1,54 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+@model Book
+
+<div class="col-5 card card-outline-primary m-1">
+    <div>
+        <h4>
+            <span class="float-left card-title">
+                @Model.BookTitle
+            </span>
+            <small>
+                @*TEXT SECONDARY IS AN ADDITIONAL BOOTSTRAP COMMAND *@
+                <span class="badge badge-pill float-right text-secondary">
+                    @Model.AuthorLastName, @Model.AuthorFirstName @Model.AuthorMiddleName
+                </span>
+            </small>
+        </h4>
+    </div>
+    @*ML IS AN ADDITIONALY COMMAND LEFT MARGIN*@
+    <div class="text-info text-left ml-4 mb-3">
+        <div class="font-weight-bolder">
+            <span>Price: @((Model.Price).ToString("c"))</span>
+        </div>
+        <div>
+            <span>Pages: @Model.NumPages</span>
+        </div>
+        <div>
+            <span>Classification: @Model.Classification</span>
+        </div>
+        <div>
+            <span>Categroy: @Model.Category</span>
+        </div>
+        <div>
+            <span>ISBN: @Model.ISBN</span>
+        </div>
+        <div>
+            <span>Publisher: @Model.BookPublisher</span>
+        </div>
+    </div>
+
+    <form id="@Model.BookId" asp-page="/Cart" method="post">
+        <input type="hidden" asp-for="BookId" />
+        <input type="hidden" name="returnUrl" value="@ViewContext.HttpContext.Request.PathAndQuery()" />
+        <span class="cart-text p-1">
+            <button type="submit" class="btn-success btn-sm pull-right mb-2" style="float:right">
+                Add To Cart
+            </button>
+        </span>
+    </form>
+</div>

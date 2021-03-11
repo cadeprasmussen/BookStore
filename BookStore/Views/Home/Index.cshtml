@@ -24,42 +24,8 @@
                 <div class="row justify-content-around">
                     @foreach (var b in row)
                     {
-                        <div class="col-5 card card-outline-primary m-1">
-                            <div>
-                                <h4>
-                                    <span class="float-left card-title">
-                                        @b.BookTitle
-                                    </span>
-                                    <small>
-                                        @*TEXT SECONDARY IS AN ADDITIONAL BOOTSTRAP COMMAND *@
-                                        <span class="badge badge-pill float-right text-secondary">
-                                            @b.AuthorLastName, @b.AuthorFirstName @b.AuthorMiddleName
-                                        </span>
-                                    </small>
-                                </h4>
-                            </div>
-                            @*ML IS AN ADDITIONALY COMMAND LEFT MARGIN*@
-                            <div class="text-info text-left ml-4 mb-3">
-                                <div class="font-weight-bolder">
-                                    <span>Price: $@b.Price</span>
-                                </div>
-                                <div>
-                                    <span>Pages: @b.NumPages</span>
-                                </div>
-                                <div>
-                                    <span>Classification: @b.Classification</span>
-                                </div>
-                                <div>
-                                    <span>Categroy: @b.Category</span>
-                                </div>
-                                <div>
-                                    <span>ISBN: @b.ISBN</span>
-                                </div>
-                                <div>
-                                    <span>Publisher: @b.BookPublisher</span>
-                                </div>
-                            </div>
-                        </div>
+                        //Adding a partial view, BookSummary.cshtmml in the shared folder
+                        <partial name="BookSummary" model="b" />
                     }
                 </div>
             </div>

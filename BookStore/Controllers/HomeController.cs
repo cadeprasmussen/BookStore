@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using BookStore.Models;
 using BookStore.Models.ViewModels;
 
 namespace BookStore.Controllers
@@ -28,18 +27,18 @@ namespace BookStore.Controllers
         }
 
         //Creating the instances of the books and page info as we get to the page
-        public IActionResult Index(string category, int page = 1)
+        public IActionResult Index(string category, int pageNum = 1)
         {
             return View(new BookListViewModel
             {
                 Books = _repository.Books
                         .Where(p => category == null || p.Category == category)
                         .OrderBy(p => p.BookId)
-                        .Skip((page - 1) * PageSize)
+                        .Skip((pageNum - 1) * PageSize)
                         .Take(PageSize),
                 PagingInfo = new PagingInfo
                 {
-                    CurrentPage = page,
+                    CurrentPage = pageNum,
                     BooksPerPage = PageSize,
                     //If category null then dispaly all books if not make to where number of pages category count
                     TotalNumBooks = category == null ?_repository.Books.Count() :
